@@ -1,9 +1,9 @@
-MatrixInverse.exe input.txt
+Debug\MatrixInverse.exe input.txt
 echo ERROR=%ERRORLEVEL%
 
-MatrixInverse.exe input2.txt
+Debug\MatrixInverse.exe input2.txt
 echo ERROR=%ERRORLEVEL%
 
-MatrixInverse.exe
+Debug\MatrixInverse.exe
 echo ERROR=%ERRORLEVEL%
 pause

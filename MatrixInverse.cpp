@@ -3,6 +3,10 @@
 #include <fstream>
 using namespace std;
 
+const int needArgument = 0;
+const int missingInput = 1;
+const int determinantIsZero = 2;
+
 int matrixDeterminant3(float m[3][3])
 {
 	return 
@@ -105,7 +109,7 @@ int matrixInverse3(float in[3][3], float out[3][3])
 	int determinant = matrixDeterminant3(in);
 
 	if (determinant == 0) {
-		return 1;
+		return determinantIsZero;
 	}
 
 	float temporalMatrix[3][3];
@@ -127,7 +131,7 @@ int main(int argc, char* argv[])
 {
 	if (argc < 2) {
 		cout << "1 Arguments required\n";
-		return 2;
+		return needArgument;
 	}
 
 	string inputFile(argv[1]);
@@ -135,7 +139,7 @@ int main(int argc, char* argv[])
 
 	if (!fin.is_open()) {
 		cout << "Failed to open Input for reding\n";
-		return 2;
+		return missingInput;
 	}
 
 	float inputMatrix[3][3];
@@ -151,10 +155,10 @@ int main(int argc, char* argv[])
 
 	int error = matrixInverse3(inputMatrix, outputMatrix);
 
-	if (error == 1)
+	if (error == determinantIsZero)
 	{
 		cout << "Determinant equals 0";
-		return 1;
+		return determinantIsZero;
 	}
 
 	for (int i = 0; i < 3; i++)
