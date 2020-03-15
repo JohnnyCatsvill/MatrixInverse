@@ -3,7 +3,7 @@
 #include <fstream>
 using namespace std;
 
-const int needArgument = 0;
+const int needArgument = 3;
 const int missingInput = 1;
 const int determinantIsZero = 2;
 
