@@ -6,6 +6,7 @@ using namespace std;
 const int needArgument = 3;
 const int missingInput = 1;
 const int determinantIsZero = 2;
+const int inputEnd = 4;
 
 int matrixDeterminant3(float m[3][3])
 {
@@ -138,7 +139,7 @@ int main(int argc, char* argv[])
 	ifstream fin(inputFile);
 
 	if (!fin.is_open()) {
-		cout << "Failed to open Input for reding\n";
+		cout << "Failed to open Input for reading\n";
 		return missingInput;
 	}
 
@@ -149,6 +150,11 @@ int main(int argc, char* argv[])
 	{
 		for (int j = 0; j < 3; j++)
 		{
+			if (fin.eof())
+			{
+				cout << "Wrong Input File\n";
+				return inputEnd;
+			}
 			fin >> inputMatrix[i][j];
 		}
 	}
@@ -157,7 +163,7 @@ int main(int argc, char* argv[])
 
 	if (error == determinantIsZero)
 	{
-		cout << "Determinant equals 0";
+		cout << "Determinant equals 0\n";
 		return determinantIsZero;
 	}
 
